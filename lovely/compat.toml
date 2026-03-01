@@ -1,0 +1,33 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 1
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "args.AT.definition.nodes[1].config.object.akyrs_stay_on_top = args.akyrs_stay_on_top"
+position = "at"
+payload = '''if args.AT.definition.nodes[1].config then
+    args.AT.definition.nodes[1].config.object.akyrs_stay_on_top = args.akyrs_stay_on_top
+end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS CryptidMoreMarioJokers "MoreMarioJokers-cryptid.lua"]'
+pattern = "SMODS.add_card({key = n64deckjokers[jokerkey]})"
+position = "at"
+payload = "SMODS.add_card({key = n64deckjokers[jokerkey], set = 'Joker'})"
+match_indent = true
+
+# cryptid adds this, which crashes on editing the cocktail deck
+[[patches]]
+[patches.regex]
+target = '=[SMODS _ "src/card_draw.lua"]'
+pattern = "(?<indent>[\t ]*)if currentBack and (?<cond>.*) then"
+line_prepend = "$indent"
+position = "at"
+payload = "if (currentBack and currentBack.effect) and ($cond) then"
+match_indent = false

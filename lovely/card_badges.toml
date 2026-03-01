@@ -1,0 +1,11 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "local obj = card.config.center"
+position = "after"
+payload = "if obj then table.insert(badges, create_badge(obj.key)) end"
+match_indent = true

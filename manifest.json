@@ -1,0 +1,18 @@
+{
+	"id": "xz47sv",
+	"name": "xz47sv",
+	"author": ["xz47sv"],
+	"description": "Random personal quality of life stuff + shitty cards",
+	"prefix": "ash",
+	"main_file": "init.lua",
+	"priority": 9223372036854775808,
+	"badge_text_colour": "FFFFFF",
+	"display_name": "xz47sv",
+	"version": "0.1.0",
+	"dependencies": [
+		"Steamodded (>=1.*)",
+		"Lovely (>=0.8)",
+        "mod_utils (>=0.1)"
+	],
+	"conflicts": []
+}
